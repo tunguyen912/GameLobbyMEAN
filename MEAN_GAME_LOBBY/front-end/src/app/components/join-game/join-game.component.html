@@ -1,0 +1,74 @@
+<div class='container'>
+    <div class="images-holder">
+        <img src="../../../assets/images/avatar.png">
+    </div>
+
+      
+    <form class='form-holder' [formGroup]="playerForm" (ngSubmit)="join_game()" >
+
+        <!-- PLAYER NAME -->
+        <div class="info-holder">
+            <div class="form-group">
+                <label>Player Name </label>
+                <input type="text" class="form-control" aria-describedby="emailHelp" formControlName="player_name" [readonly]='true'>
+            </div>
+        </div>
+
+        <!-- RANK -->
+        <div class="info-holder"> 
+            <div class="form-group">
+                <label>Rank :  </label>
+                <input type="text" class="form-control" aria-describedby="emailHelp" formControlName="rank" [readonly]='true'>
+            </div>
+        </div>
+
+        <!-- SCORE -->
+        <div class="info-holder"> 
+            <div class="form-group">
+                <label>Score :  </label>
+                <input type="text" class="form-control" aria-describedby="emailHelp" formControlName="score" [readonly]='true' >
+            </div>
+        </div>
+
+        <!-- TIME PLAYED -->
+        <div class="info-holder">
+            <div class="form-group">
+                <label>Time Played </label>
+                <input type="text" class="form-control" aria-describedby="emailHelp" formControlName="time" [readonly]='true'>
+            </div>
+        </div>
+
+        <!-- FAVORITE GAME -->
+        <div class="info-holder"> 
+            <div class="form-group">
+                <label>Favorite Game </label>
+                <input type="text" class="form-control" aria-describedby="emailHelp" formControlName="favorite" [readonly]='true'>
+            </div>
+        </div>
+
+        <!-- CUSTOMER PERFERED GAME -->
+        <div class="info-holder"> 
+            <label>Customer : </label>
+            <mat-form-field style="width : 60% ; text-align: center; font: bold" >
+                    <mat-select placeholder="Choose your game"  >
+                      <mat-option  *ngFor="let g of game" [value]="g.title"   (click)="selected_game(g.title)">{{g.title}}</mat-option>
+                    </mat-select>
+                    <div *ngIf="game_choice == false"> Please enter your perfered game</div>
+            </mat-form-field>
+        </div>
+
+        
+        <div class = 'button-holder'>
+
+            <!-- JOIN BUTTON -->
+            <button class="btn btn-primary" type='submit' style="margin-left: 2%;" [disabled]="game_choice == false || game_choice == null" >
+                JOIN GAME
+            </button>
+
+            <!-- CANCEL BUTTON -->
+            <a class="btn btn-danger"  role="button" style="float: right; margin-right:2%; width: 30%;" (click)="cancel()">Cancel</a>
+        </div>
+    </form>
+    
+</div>
+

@@ -1,0 +1,17 @@
+<div class='block' style="justify-content: space-around;">
+    <mat-nav-list>
+        <a mat-list-item routerLinkActive="active" routerLink="/home" class="btn btn-primary"
+            style="float: left; width: 20%;">
+            HOME
+        </a>
+        <button mat-raised-button (click)="login()" class="btn btn-primary" style="width: 20%; float:right"
+            *ngIf="loged==false">Login</button>
+        <button mat-raised-button (click)="logout()" class="btn btn-primary" style="width: 20%; float : right"
+            *ngIf="loged==true">Logout</button>
+        <a mat-list-item routerLinkActive="active" routerLink="/admin" class="btn btn-primary" *ngIf="loged==true"
+            style="float: left; width: 20%;">
+            ADMIN
+        </a>
+    </mat-nav-list>
+</div>
+<router-outlet></router-outlet>

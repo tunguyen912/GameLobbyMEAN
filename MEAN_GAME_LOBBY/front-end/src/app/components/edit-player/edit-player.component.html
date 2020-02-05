@@ -1,0 +1,95 @@
+<div class='container'>
+        <div class="images-holder">
+            <img src="../../../assets/images/avatar.png">
+        </div>
+    
+    
+        <form class='form-holder' [formGroup]="playerForm" (ngSubmit)="commit()">
+            <div class="info-holder">
+                <div class="form-group">
+                    <label>Player Name </label>
+                    <input type="text" class="form-control" aria-describedby="emailHelp" formControlName="player">
+                    <div class='alert alert-danger' *ngIf="player.touched && !player.valid">
+                        <div *ngIf="player.errors.required"> player shouldn't be blank</div>
+                        <div *ngIf="player.dirty && player.invalid">player must not have special character aside from " _ " and " - "</div>
+                        <div *ngIf="player.errors.minlength"> Minium length should be more then 4</div>
+                    </div>
+                </div>
+    
+            </div>
+    
+            <div class="info-holder">
+                <div class="form-group">
+                    <label>Rank </label>
+                    <mat-form-field style="width : 100% ; text-align: center; font: bold">
+                        <mat-select [placeholder]="rank" formControlName="rank">
+                            <mat-option *ngFor="let r of rank_setting" [value]="r">
+                                {{r}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+    
+            <div class="info-holder">
+                <div class="form-group">
+                    <label>Score </label>
+                    <input type="text" class="form-control" aria-describedby="emailHelp"  formControlName="score">
+                    <div class='alert alert-danger' *ngIf="score.touched && !score.valid">
+                        <div *ngIf="score.errors.required"> player score shouldn't be blank</div>
+                        <div *ngIf="score.dirty && score.invalid">Number Only</div>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="info-holder">
+                <div class="form-group">
+                    <label>Time </label>
+                    <input type="text" class="form-control" aria-describedby="emailHelp"  formControlName="time">
+                    <div class='alert alert-danger' *ngIf="time.touched && !time.valid">
+                        <div *ngIf="time.errors.required"> There must a time for everything right ?</div>
+                        <div *ngIf="time.dirty && time.invalid">No special character please</div>
+                    </div>
+                </div>
+    
+            </div>
+    
+    
+            <div class="info-holder">
+                <div class='form-group'>
+                    <label>Favorite Game choice </label>
+                    <mat-form-field style="width : 100% ; text-align: center; font: bold">
+                        <mat-select [placeholder]="favorite" formControlName="favorite">
+                            <mat-option *ngFor="let g of game" [value]="g.title" >
+                                {{g.title}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+    
+    
+            <div class="info-holder">
+                <div class='form-group'>
+                    <label>Status </label>
+                    <mat-form-field style="width : 100% ; text-align: center; font: bold">
+                        <mat-select [placeholder]="status" formControlName="status">
+                            <mat-option *ngFor="let a of avaliable" [value]="a" >
+                                {{a}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+    
+    
+            <div class='button-holder'>
+                <button class="btn btn-primary" style="margin-left: 2%;" [disabled]="!playerForm.valid">
+                    EDDIT PLAYER
+                </button>
+                <a class="btn btn-danger" role="button" style="float: right; margin-right:2%; width: 30%;"
+                    (click)="cancel()">Cancel</a>
+            </div>
+        </form>
+    
+    </div>

@@ -1,0 +1,47 @@
+<div >
+
+    
+    <!-- FILTER -->
+    <mat-form-field style="width : 100%">
+        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+    </mat-form-field>
+
+    <!-- NG IF TO CHANGE ELEMENT TO ADMIN ELEMENT -->
+    <div class="game-list">
+        <mat-table [dataSource]="dataSource" matSort>
+
+            <ng-container matColumnDef="title">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> Game Title </mat-header-cell>
+                <mat-cell *matCellDef="let element" data-label="TITLE"> {{element.title}} </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="platform">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> Platform </mat-header-cell>
+                <mat-cell *matCellDef="let element" data-label="platform"> {{element.platform}} </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="genre">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> Genre </mat-header-cell>
+                <mat-cell *matCellDef="let element" data-label="GENRE"> {{element.genre}} </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="rating">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> Rating </mat-header-cell>
+                <mat-cell *matCellDef="let element" data-label="RATING"> {{element.rating}} </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="publisher">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> Publisher </mat-header-cell>
+                <mat-cell *matCellDef="let element" data-label="PUBLISHER"> {{element.publisher}} </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="release">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> Release date </mat-header-cell>
+                <mat-cell *matCellDef="let element" data-label="RELEASE"> {{element.release}} </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="status">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> Status </mat-header-cell>
+                <mat-cell *matCellDef="let element" data-label="STATUS"> {{element.status}} </mat-cell>
+            </ng-container>
+            
+            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        </mat-table>
+        <mat-paginator [pageSizeOptions]="[5, 10]" showFirstLastButtons></mat-paginator>
+    </div>
+</div>

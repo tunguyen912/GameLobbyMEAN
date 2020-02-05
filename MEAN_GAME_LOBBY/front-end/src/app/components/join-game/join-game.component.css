@@ -1,0 +1,18 @@
+.images-holder{
+    float: left;
+    width: 25%;
+    height: auto;
+}
+.form-holder{
+    float: left;
+    width: 65%;
+}
+.container{
+    justify-content: space-between;
+    display: flex;
+    flex-direction: row;
+}
+
+.button-holder{
+    width: 100%;
+}

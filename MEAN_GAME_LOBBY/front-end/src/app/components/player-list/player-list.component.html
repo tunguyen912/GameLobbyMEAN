@@ -1,0 +1,78 @@
+<div >
+    <!-- FILTER -->
+    <mat-form-field style="width : 100%">
+        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+    </mat-form-field>
+    <!-- NG IF TO CHANGE ELEMENT TO ADMIN ELEMENT -->
+    <div class="player-list">
+        <mat-table [dataSource]="dataSource" matSort>
+
+            <ng-container matColumnDef="player">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> Player name </mat-header-cell>
+                <mat-cell *matCellDef="let element" data-label="PLAYER"> {{element.player}} </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="rank">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> Rank </mat-header-cell>
+                <mat-cell *matCellDef="let element" data-label="RANK"> {{element.rank}} </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="score">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> Score </mat-header-cell>
+                <mat-cell *matCellDef="let element" data-label="SCORE"> {{element.score}} </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="time">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> Time played </mat-header-cell>
+                <mat-cell *matCellDef="let element" data-label="TIME"> {{element.time}} </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="game_history">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> Game History List </mat-header-cell>
+                <mat-cell *matCellDef="let element ; let i=index;" data-label="GAME HISTORY" >     
+                    <mat-form-field>
+                        <mat-label>Click to show</mat-label>
+                        <mat-select  (click)="test(i)" >
+                            <mat-option *ngFor="let game of GamePlayed" >
+                                {{game}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                      <!--  get the index of each game by let i=index -->
+                    </mat-cell>
+            </ng-container>
+
+                <!--  TESTING -->
+            
+
+
+               <!--  FAVORITE  -->
+               <ng-container matColumnDef="favorite">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> Favorite Game </mat-header-cell>
+                <mat-cell *matCellDef="let element" data-label="FAVORITE"> {{element.favorite}} </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="status">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> Status </mat-header-cell>
+                <mat-cell *matCellDef="let element" data-label="STATUS"> {{element.status | uppercase}} </mat-cell>
+            </ng-container>
+
+            <!-- JOIN  -->
+            <ng-container matColumnDef="joinable">
+                <mat-header-cell *matHeaderCellDef mat-sort-header style="float: right;"> JOIN </mat-header-cell>
+                <mat-cell *matCellDef="let element" data-label="JOIN">
+                    <button class="btn btn-info" [hidden]="avaliable_checker(element.status) == false"
+                        (click)="join_game(element._id , element.status , element.joinable)">
+                        {{element.joinable | uppercase}}
+                    </button>
+                </mat-cell>
+            </ng-container>
+           
+
+            
+            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        </mat-table>
+        <mat-paginator [pageSizeOptions]="[5, 10]" showFirstLastButtons></mat-paginator>
+    </div>
+</div>

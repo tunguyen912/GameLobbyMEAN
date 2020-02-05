@@ -1,0 +1,25 @@
+{
+  "name": "mean_project",
+  "version": "1.0.0",
+  "description": "full stack mean project for the course",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "backend" : "cd back-end && nodemon app.js",
+    "start" : "cd back-end && npm start",
+    "install-backend" : "cd back-end && npm install",
+    "install-frontend" : "cd front-end && npm install",
+    "full_install" : "npm run install-backend && npm run install-frontend",
+    "mean" : "cd back-end && npm run dev"
+  },
+  "author": "Thanh Quan - Tu Nguyen",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "concurrently": "^5.0.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.7.7",
+    "nodemon": "^1.19.4",
+    "uuid": "^3.3.3"
+  }
+}
